@@ -24,11 +24,11 @@ else:
         try:
             res = int(sys.argv[2])
         except ValueError:
-            print("check your num")
+            print("check your num.Input is not a int num!")
         else:
             if res < 1 or res > 1000000:
-                print("res is out of our range")
-                print("it must between 1 to 1000000")
+                print("Your input is out of our range!")
+                print("It must between 1 to 1000000!")
             else:
                 sudoko_generator = FastSudoko.FastSudokoGenerator(res)
                 sudoko_generator.create_puzzle()
@@ -39,21 +39,28 @@ else:
         sudoko_puzzle = SudoTable.SudoTable(1)
         table = []
         #
-        file = codecs.open(file_path, 'r', 'utf-8')
-        num = 0
-        for line in file.readlines():
-            if num == 9:
-                break
-            row = line.strip().split()
-            for i in range(0,9):
-                row[i] = int(row[i])
-            table.append(row)
-            num += 1
-        file.close()
-        # 将待解决的传入table中
-        sudoko_puzzle.solve_a_puzzle(table)
-        # 将结果写入sudoko.txt中
-        sudoko_puzzle.write_to_file("sudoko.txt")
+        try:
+            file = codecs.open(file_path, 'r', 'utf-8')
+        except FileNotFoundError:
+            print("You should input sudopuzzle.txt for your file path!")
+            print("Or you could create a puzzle file ended with '.txt'!")
+
+            pass
+        else:
+            num = 0
+            for line in file.readlines():
+                if num == 9:
+                    break
+                row = line.strip().split()
+                for i in range(0, 9):
+                    row[i] = int(row[i])
+                table.append(row)
+                num += 1
+            file.close()
+            # 将待解决的传入table中
+            sudoko_puzzle.solve_a_puzzle(table)
+            # 将结果写入sudoko.txt中
+            sudoko_puzzle.write_to_file("sudoko.txt")
         pass
     else:
         print("check your input")
