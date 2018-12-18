@@ -1,11 +1,9 @@
 import os
 import sys
-
 import FastSudoko
 import SudoTable
 import time
 import codecs
-
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
@@ -19,6 +17,12 @@ start_time = time.time()
 
 if l != 3:
     print("check your input!")
+    print("Valid input is like:")
+    print("1.")
+    print("start.py -c num_of_sudoko_ending_you_want_to_generate")
+    print("num should between [1,1000000]")
+    print("2.")
+    print("start.py -s your_sudoko_puzzle_file_path")
 else:
     if sys.argv[1] == '-c':
         try:
@@ -63,7 +67,7 @@ else:
             sudoko_puzzle.write_to_file("sudoko.txt")
         pass
     else:
-        print("check your input")
+        pass
     end_time = time.time()
     print("time consumed = ", end_time-start_time, 's')
 
