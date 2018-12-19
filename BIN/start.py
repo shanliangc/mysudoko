@@ -52,17 +52,20 @@ else:
             pass
         else:
             num = 0
+            #要求连续读入
             for line in file.readlines():
-                if num == 9:
-                    break
+                if num % 9 == 0 and num != 0:
+                    sudoko_puzzle.solve_a_puzzle(table)
+                    table = []
                 row = line.strip().split()
+                if len(row) == 0:
+                    break
                 for i in range(0, 9):
                     row[i] = int(row[i])
                 table.append(row)
                 num += 1
             file.close()
             # 将待解决的传入table中
-            sudoko_puzzle.solve_a_puzzle(table)
             # 将结果写入sudoko.txt中
             sudoko_puzzle.write_to_file("sudoko.txt")
         pass

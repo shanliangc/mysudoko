@@ -2,8 +2,12 @@ from tkinter import *
 import codecs
 from tkinter import messagebox
 
+# 全局变量
 table = []
+entry_list = []
+coordinate_list = []
 
+# 将文件读入数独中，默认为sudokopuzzle1.txt
 def read_puzzle():
     file_path = "sudokopuzzle1.txt"
     file = codecs.open(file_path, 'r', 'utf-8')
@@ -17,15 +21,7 @@ def read_puzzle():
         table.append(row)
         num += 1
 
-read_puzzle()
-for row in table:
-    print(row)
-window = Tk()
-window.title('sudoko')
-window.geometry('600x600')
-entry_list = []
-coordinate_list = []
-# ele = ['1','2','3','4','5','6','7','8','9']
+# 检查填入的内容是否满足数独库文件
 def check():
     flag = True
     ele = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -61,6 +57,9 @@ def check():
                             print("wrong block!")
                             return False
     return True
+
+
+# 用于和提交按钮进行联动
 def submit():
     ele = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     for entry in entry_list:
@@ -81,6 +80,16 @@ def submit():
     else:
         messagebox.showinfo(title="SORRY:(", message="you don't finish this puzzle!")
 
+# 读入数独题目
+read_puzzle()
+for row in table:
+    print(row)
+# 数组
+window = Tk()
+window.title('sudoko')
+window.geometry('600x600')
+
+# ele = ['1','2','3','4','5','6','7','8','9']
 
 for i in range(9):
     for j in range(9):
@@ -96,6 +105,4 @@ for i in range(9):
             label.grid(row=i,column=j,padx=10,pady=10)
 button = Button(window,text='submit',command = submit)
 button.grid(row=10,column=10)
-
-
 window.mainloop()
