@@ -125,6 +125,9 @@ class SudoTable:
                 print(row, end = '')
             print("----------------------------------------------")
             print("")
+
+            # 加上这一条
+            self.ans = []
             # for row in self.table:
             #     print(row)
             # print()
@@ -224,10 +227,8 @@ class SudoTable:
         self.path = []
         # 构建一个数据结构
         # 这个数据结构里标着False的，代表这个单元格里面这个元素还没有被填入
-        print("")
         print("the sudoko puzzle is :")
         print("----------------------------------------------")
-        print("the sudoko puzzle is :")
         for row in table:
             print(row)
         print("----------------------------------------------")

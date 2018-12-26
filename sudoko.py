@@ -1,7 +1,7 @@
 import os
 import sys
-import FastSudoko
-import SudoTable
+import BIN.FastSudoko as FastSudoko
+import BIN.SudoTable as SudoTable
 import time
 import codecs
 
@@ -37,7 +37,7 @@ else:
                 sudoko_generator = FastSudoko.FastSudokoGenerator(res)
                 # 改了！！请注意
                 sudoko_generator.perm(1)
-                file_path = "sudoko.txt"
+                file_path = "BIN/sudoko.txt"
                 sudoko_generator.write_to_file(file_path)
     elif sys.argv[1] == '-s':
         file_path = sys.argv[2]
@@ -47,7 +47,7 @@ else:
         try:
             file = codecs.open(file_path, 'r', 'utf-8')
         except FileNotFoundError:
-            print("You should input sudopuzzle.txt for your file path!")
+            print("You should input BIN/sudopuzzle.txt for your file path!")
             print("Or you could create a puzzle file ended with '.txt'!")
             pass
         else:
@@ -67,7 +67,7 @@ else:
             file.close()
             # 将待解决的传入table中
             # 将结果写入sudoko.txt中
-            sudoko_puzzle.write_to_file("sudoko.txt")
+            sudoko_puzzle.write_to_file("BIN/sudoko.txt")
         pass
     else:
         pass

@@ -9,7 +9,7 @@ coordinate_list = []
 
 # 将文件读入数独中，默认为sudokopuzzle1.txt
 def read_puzzle():
-    file_path = "sudokopuzzle1.txt"
+    file_path = "BIN/sudokopuzzle1.txt"
     file = codecs.open(file_path, 'r', 'utf-8')
     num = 0
     for line in file.readlines():

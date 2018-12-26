@@ -1,5 +1,4 @@
-ls = []
-for i in range(0,9):
-    c = 1+i
-    ls.append(c)
-print(ls)
+from BIN import FastSudoko
+tmp_fast_sudoko_generator = FastSudoko.FastSudokoGenerator(100)
+tmp_fast_sudoko_generator.test_ele_sequence(10)
+tmp_fast_sudoko_generator.ele_sequence_generator(0)
